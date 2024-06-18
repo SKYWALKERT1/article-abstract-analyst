@@ -39,6 +39,9 @@ This project is a Flask web application that provides personalized article recom
     nltk.download('stopwords')
     ```
 
+5. **Install Dataset
+   link: https://www.kaggle.com/datasets/Cornell-University/arxiv
+
 ## ⚙️ Configuration
 
 1. **MongoDB Configuration:**
