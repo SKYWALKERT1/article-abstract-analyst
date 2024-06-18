@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 20px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        .recommendation-list {
+            margin-bottom: 30px;
+        }
+        .recommendation-list li {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+        .recommendation-list li:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .recommendation-list strong {
+            color: #2980b9;
+        }
+        .recommendation-list .icon {
+            margin-right: 10px;
+        }
+        .metrics-section {
+            margin-top: 40px;
+        }
+        .metric {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .metric:hover {
+            transform: scale(1.05);
+        }
+        .metric h4 {
+            font-size: 1.5em;
+            color: #16a085;
+        }
+        .metric p {
+            font-size: 1.2em;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Recommendations</h2>
+        <div class="recommendation-section">
+            <h3>TF-IDF Recommendations</h3>
+            <ul class="recommendation-list list-group">
+            {% for article in recommendations.tfidf %}
+                <li class="list-group-item">
+                    <strong><i class="fas fa-book icon"></i>Title:</strong> {{ article.title }}<br>
+                    <strong><i class="fas fa-user icon"></i>Authors:</strong> {{ article.authors }}<br>
+                    <strong><i class="fas fa-file-alt icon"></i>Abstract:</strong> {{ article.abstract }}<br>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="recommendation-section">
+            <h3>FastText Recommendations</h3>
+            <ul class="recommendation-list list-group">
+            {% for article in recommendations.fasttext %}
+                <li class="list-group-item">
+                    <strong><i class="fas fa-book icon"></i>Title:</strong> {{ article.title }}<br>
+                    <strong><i class="fas fa-user icon"></i>Authors:</strong> {{ article.authors }}<br>
+                    <strong><i class="fas fa-file-alt icon"></i>Abstract:</strong> {{ article.abstract }}<br>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="recommendation-section">
+            <h3>SciBERT Recommendations</h3>
+            <ul class="recommendation-list list-group">
+            {% for article in recommendations.scibert %}
+                <li class="list-group-item">
+                    <strong><i class="fas fa-book icon"></i>Title:</strong> {{ article.title }}<br>
+                    <strong><i class="fas fa-user icon"></i>Authors:</strong> {{ article.authors }}<br>
+                    <strong><i class="fas fa-file-alt icon"></i>Abstract:</strong> {{ article.abstract }}<br>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="metrics-section">
+            <h3>Performance Metrics</h3>
+            <div class="metric">
+                <h4>TF-IDF</h4>
+                <p>Precision: {{ metrics.tfidf.precision }}</p>
+                <p>Recall: {{ metrics.tfidf.recall }}</p>
+            </div>
+            <div class="metric">
+                <h4>FastText</h4>
+                <p>Precision: {{ metrics.fasttext.precision }}</p>
+                <p>Recall: {{ metrics.fasttext.recall }}</p>
+            </div>
+            <div class="metric">
+                <h4>SciBERT</h4>
+                <p>Precision: {{ metrics.scibert.precision }}</p>
+                <p>Recall: {{ metrics.scibert.recall }}</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

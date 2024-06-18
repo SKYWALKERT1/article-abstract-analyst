@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anasayfa</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://karacayacademy.com/wp-content/uploads/2014/07/Makale-Yazim-Gorsel-Cropped.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .container-wrapper {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group-text {
+            background: #ffffff;
+            border-right: 0;
+            font-size: 1.2em;
+        }
+        .form-control {
+            border-left: 0;
+            font-size: 1.2em;
+            padding: 15px;
+        }
+        button {
+            width: 100%;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 1.5em;
+        }
+        button:hover {
+            background-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-wrapper">
+        <h2>Makale Önerileri</h2>
+        <form action="{{ url_for('recommend') }}" method="post">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-play"></i></span>
+                </div>
+                <input type="number" class="form-control" id="start_row" name="start_row" placeholder="Başlangıç satır sayısını giriniz" required>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-stop"></i></span>
+                </div>
+                <input type="number" class="form-control" id="end_row" name="end_row" placeholder="Bitiş satır sayısını giriniz" required>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-book"></i></span>
+                </div>
+                <input type="text" class="form-control" id="user_input" name="user_input" placeholder="Makale ile ilgili kelimeleri giriniz" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Önerileri Getir</button>
+        </form>
+    </div>
+
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
